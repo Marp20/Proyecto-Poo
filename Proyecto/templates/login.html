@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Colegio San Miguel</title>   
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/estilos.css') }}">
+</head>
+<body>
+    <h1>Iniciar sesión</h1>
+    {% if error_message %}
+        <p>{{ error_message }}</p>
+    {% endif %}
+    <form method="POST" action="{{ url_for('login') }}">
+        <label for="correo">Correo electrónico:</label><br>
+        <input type="email" id="correo" name="correo" required><br><br>
+        <label for="clave">Contraseña:</label><br>
+        <input type="password" id="clave" name="clave" required><br><br>
+        <label for="rol">Ingrese rol:</label><br>
+        <input type="rol" id="rol" name="rol" required><br><br>
+        <input type="submit" value="Iniciar sesión">
+    </form>
+</body>
+</html>

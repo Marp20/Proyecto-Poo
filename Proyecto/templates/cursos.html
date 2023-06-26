@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cursos</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/estilos.css') }}">
+</head>
+<body>
+    <h1>Cursos Disponibles</h1>
+    <form action="{{ url_for('estudiantes') }}" method="post">
+        <select name="curso" id="curso">
+            {% for curso in cursos %}
+                <option value="{{ curso.id }}">{{ curso.anio }} - {{ curso.division }}</option>
+            {% endfor %}
+        </select>
+    
+        <br>
+        <button type="submit">Seleccionar</button>
+    </form>
+</body>
+</html>

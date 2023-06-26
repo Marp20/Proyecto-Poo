@@ -1,0 +1,48 @@
+<link rel="stylesheet" href="{{ url_for('static', filename='css/estilos.css') }}">
+
+<form action="{{ url_for('guardar_asistencia') }}" method="post">
+  <input type="hidden" name="curso" value="{{ curso.id }}">
+  
+  <table>
+    <thead>
+      <tr>
+        <th>Estudiante</th>
+        <th>Asistencia</th>
+        <th>Justificación</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for estudiante in estudiantes %}
+        <tr>
+          <td>{{ estudiante.apellido }}, {{ estudiante.nombre }}</td>
+          <td>
+            <select name="asistencia_{{ estudiante.id }}">
+              {% set selected_option = None %}
+              {% for asistencia in asistencias %}
+                {% if asistencia.idestudiante == estudiante.id %}
+                  {% set selected_option = "True" if asistencia.asistio else "False" %}
+                {% endif %}
+              {% endfor %}
+              <option value="True" {% if selected_option == "True" %}selected{% endif %}>Asistió</option>
+              <option value="False" {% if selected_option == "False" %}selected{% endif %}>No Asistió</option>
+            </select>
+            <select name="tipo_asistencia">
+              <option value="1" {% if selected_option == 1 %}selected{% endif %}>Aula</option>
+              <option value="2" {% if selected_option == 2 %}selected{% endif %}>ED</option>
+            </select>
+            <select name="fecha_asistencia">
+              {% for asistencia in asistencias %}
+                {% if asistencia.idestudiante == estudiante.id %}
+                  <option value="{{ asistencia.fecha }}" {% if selected_option == asistencia.fecha %}selected{% endif %}>{{ asistencia.fecha }}</option>
+                {% endif %}
+              {% endfor %}
+            </select>
+          </td>
+          <td><input type="text" name="justificacion_{{ estudiante.id }}"></td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  
+  <button type="submit">Guardar Asistencia</button>
+</form>

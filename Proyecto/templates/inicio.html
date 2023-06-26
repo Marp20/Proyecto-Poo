@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width">
+   <title>Colegio San Miguel</title>
+   
+ 
+</head>
+<body>
+<header>
+ <h2>Colegio San Miguel</h2>
+ <link rel="stylesheet" href="{{ url_for('static', filename='css/estilos.css') }}">
+</header>
+<section>
+ <nav>
+    <ul>
+    <li><a href = "{{ url_for('login') }}">Iniciar Sesion</a></li>
+    </ul>
+ </nav> 
+ <!-- si va a enviar datos al servidor use etiqueta form, si solo va a mostrar datos use la etiqueta article-->
+ <form>
+    <h1>Bienvenido!!</h1>
+    <p>Por favor, iniciar sesion para hacer uso de las funcionalidades de la pagina.</p> 
+ </form>
+
+</section>
+<footer>
+    <p>Dirección y teléfono del colegio</p>
+</footer>
+</body>
+</html>

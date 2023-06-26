@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Detalles del Informe</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/estilos.css') }}">
+</head>
+<body>
+    <h1>Detalles del Informe</h1>
+    <h2>Curso: {{ curso.anio }}-{{curso.division}}</h2>
+    <table>
+        <tr>
+            <th>Estudiante</th>
+            <th>Asistencias Totales</th>
+            <th>Asistencias Asistidas (Clase de Aula)</th>
+            <th>Asistencias Asistidas (Educación Física)</th>
+            <th>Asistencias No Asistidas Justificadas (Clase de Aula)</th>
+            <th>Asistencias No Asistidas Injustificadas (Clase de Aula)</th>
+            <th>Asistencias No Asistidas Justificadas (Educación Física)</th>
+            <th>Asistencias No Asistidas Injustificadas (Educación Física)</th>
+            <th>Total Inasistencias</th>
+        </tr>
+        {% for estudiante in estudiantes %}
+        <tr>
+            <td>{{ estudiante.nombre }} {{estudiante.apellido}}</td>
+            <td>{{ estudiante.asistencias_totales }}</td>
+            <td>{{ estudiante.aula_presente }}</td>
+            <td>{{ estudiante.educacion_fisica_presente }}</td>
+            <td>{{ estudiante.aula_ausente_justificada }}</td>
+            <td>{{ estudiante.aula_ausente_injustificada }}</td>
+            <td>{{ estudiante.educacion_fisica_ausente_justificada }}</td>
+            <td>{{ estudiante.educacion_fisica_ausente_injustificada }}</td>
+            <td>{{ estudiante.total_inasistencias }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <a href="{{ url_for('mostrar_cursos', pag='detalles') }}">Volver</a>
+</body>
+</html>

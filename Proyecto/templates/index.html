@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width">
+   <title>Colegio San Miguel</title>
+   <link rel="stylesheet" href="{{ url_for('static', filename='css/estilos.css') }}">
+ 
+</head>
+<body>
+<header>
+ <h2>Colegio San Miguel</h2>
+ 
+</header>
+<section>
+ <nav>
+    <ul>
+    <li><a href="{{ url_for('mostrar_cursos', pag='registro') }}">Registrar Asistencia</a></li>
+    <li><a href="{{ url_for('mostrar_cursos', pag='detalles') }}">Informe con detalles</a></li>
+    <li><a href = "{{ url_for('logout') }}">Cerrar Sesion</a></li>
+    </ul>
+ </nav> 
+ <!-- si va a enviar datos al servidor use etiqueta form, si solo va a mostrar datos use la etiqueta article-->
+ <form>
+    <h1>Proyecto POO</h1>
+    <p>Las funcionalidades presentes son:</p>
+    <p>#Login: permite iniciar sesion de un usuario de tipo Preceptor o Padre.</p>
+    <p>#Registrar Asistencia: al usuario Preceptor le permite cargar en la base de datos la Asistencia de los alumnos de un curso determinado</p>
+    <p>#Informe con detalles: al usuario Preceptor le permite visualisar los datos cargados por la funcion Registrar Asistencia.</p>  
+ </form>
+
+</section>
+<footer>
+    <p>Dirección y teléfono del colegio</p>
+</footer>
+</body>
+</html>
